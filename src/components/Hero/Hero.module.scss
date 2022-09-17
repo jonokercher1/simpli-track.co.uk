@@ -1,0 +1,102 @@
+@use "sass:color";
+
+.hero {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  justify-content: center;
+  min-height: 500px;
+}
+
+.heading {
+  color: var(--color-dark-grey);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  margin-top: 0;
+  max-width: 800px;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    font-size: var(--font-size-h1);
+  }
+}
+
+.form {
+  display: flex;
+  width: 100%;
+}
+
+.inputWrap {
+  --input-padding: var(--spacing-regular);
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 540px;
+  position: relative;
+  width: 100%;
+}
+
+.label {
+  position: absolute;
+  left: 0;
+}
+
+.input {
+  border-radius: var(--border-radius-regular);
+  border: 1px solid var(--color-pale-grey);
+  box-shadow: 0px 0px 10px 0px var(--color-shadow);
+  color: var(--color-dark-grey);
+  flex-grow: 1;
+  font-size: var(--font-size-bodyLarge);
+  font-weight: var(--font-weight-regular);
+  outline: none;
+  padding: var(--input-padding);
+
+  &::placeholder {
+    color: var(--color-light-grey);
+  }
+}
+
+.submitButton {
+  align-items: center;
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  right: var(--input-padding);
+  width: 20px;
+
+  >img {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
+}
+
+.image {
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    bottom: 0;
+    display: block;
+    max-width: 600px;
+    position: absolute;
+    right: var(--spacing-xlarge);
+    z-index: -1
+  }
+}
+
+.errorMessage {
+  color: var(--color-state-error);
+  font-size: var(--font-size-subtext);
+  left: 0;
+  position: absolute;
+  top: 100%;
+}
