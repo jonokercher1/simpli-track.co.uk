@@ -85,9 +85,9 @@
 
   @media screen and (min-width: 768px) {
     bottom: 0;
-    display: block;
+    display: block !important;
     max-width: 600px;
-    position: absolute;
+    position: absolute !important;
     right: var(--spacing-xlarge);
     z-index: -1
   }
