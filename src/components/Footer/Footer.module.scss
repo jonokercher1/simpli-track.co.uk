@@ -1,6 +1,11 @@
-.footer {
+.footerContainer {
   align-items: center;
   display: flex;
   justify-content: center;
   padding: var(--spacing-xlarge);
+}
+
+.footerText {
+  font-size: var(--font-size-subtext);
+  text-align: center;
 }

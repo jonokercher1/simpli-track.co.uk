@@ -1,38 +1,36 @@
 import React from 'react';
 import type { HeadFC } from 'gatsby';
-import Header from '../components/Header';
+import Form from '../components/Form'
 import Footer from '../components/Footer';
-import Hero from '../components/Hero';
-import FeatureGrid from '../components/FeatureGrid';
-import SplitContent from '../components/SplitContent';
-import ContentManager from '../utils/ContentManager';
+import Container from '../components/Container';
+import { StaticImage } from 'gatsby-plugin-image';
+import * as styles from './index.module.scss';
 import '../scss/index.scss';
-
-const contentManager = new ContentManager();
+import { Toaster } from 'react-hot-toast';
 
 const IndexPage = () => {
   return (
     <>
-      <Header />
+      <Toaster />
 
-      <Hero />
+      <div className={styles.page}>
+        <section className={styles.main}>
+          <main className={styles.contentContainer}>
+            <h3 className={styles.subHeading}>Get early access to</h3>
+            <h1 className={styles.heading}>The future of online coaching</h1>
+            <Form />
+          </main>
 
-      <FeatureGrid
-        features={contentManager.getFeatures()}
-        title="Why SimpliTrack?"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas dignissim ultrices. Nam tincidunt sem a quam tincidunt pharetra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;"
-      />
+          <StaticImage
+            src="../assets/images/hero.svg"
+            alt=""
+            placeholder="blurred"
+            className={styles.image}
+          />
+        </section>
 
-      <SplitContent
-        left={{
-          content: <p>left</p>
-        }}
-        right={{
-          content: <p>Right</p>
-        }}
-      />
-
-      <Footer />
+        <Footer />
+      </div>
     </>
   )
 };

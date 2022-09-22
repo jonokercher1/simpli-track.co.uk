@@ -3,7 +3,7 @@ import * as styles from './Container.module.scss';
 
 interface IContainer {
   children: ReactNode;
-  className?: string
+  className?: string;
 }
 
 const Container: FC<IContainer> = ({ children, className }) => (
