@@ -3,12 +3,14 @@ import emailValidator from 'email-validator';
 import * as   styles from './Form.module.scss';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import Loading from '../Loading';
 
 interface FormData {
   email: string;
 }
 
 const Form: FC = () => {
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit, setValue, formState: { errors } } = useForm<FormData>({ mode: 'all' });
 
   const encodeFormData = (data: any) => {
@@ -22,6 +24,7 @@ const Form: FC = () => {
 
   const onHandleSubmit = async (data: FormData) => {
     try {
+      setLoading(true);
       const response = await fetch('/', {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -48,6 +51,8 @@ const Form: FC = () => {
           color: '#ffffff'
         }
       });
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -75,12 +80,17 @@ const Form: FC = () => {
 
         <button
           className={styles.submitButton}
+          disabled={loading}
           type="submit"
         >
-          <img
-            alt=""
-            src={require('../../assets/icons/arrow-right.png').default}
-          />
+          {loading ? (
+            <Loading />
+          ) : (
+            <img
+              alt=""
+              src={require('../../assets/icons/arrow-right.png').default}
+            />
+          )}
         </button>
       </div>
     </form>
